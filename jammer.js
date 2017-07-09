@@ -3,21 +3,24 @@
  */
 
 function $(element) {
-
-    this.element = document.querySelector(element);
-    return new jammerElement;
+    if (element == document || element == window) {
+        this.element = element;
+    } else {
+        this.element = document.querySelector(element);
+    }
+    return new jammerElement(this.element);
 };
 
 var jammerElement = (function () {
-    function jammer() {
+    function jammer(element) {
         this.element = element;
-
         this.text = function (text) {
-            element.textContent = text;
+            this.element.textContent = text;
+            return this
         };
-
-
+        this.on = function (event, callback) {
+            this.element.addEventListener(event, callback);
+        };
     }
-
     return jammer;
 })();
