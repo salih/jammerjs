@@ -3,7 +3,7 @@
  */
 
 function $(element) {
-    if (element == document || element == window) {
+    if (element == document || element == window || element == history || element == location ) {
         this.element = element;
     } else {
         this.element = document.querySelector(element);
@@ -21,6 +21,9 @@ var jammerElement = (function () {
         this.on = function (event, callback) {
             this.element.addEventListener(event, callback);
         };
+        this.html = function (html) {
+            this.element.innerHTML = html;
+        }
     }
     return jammer;
 })();
