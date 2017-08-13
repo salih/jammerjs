@@ -15,18 +15,18 @@ var jammerElement = (function () {
     function jammer(element) {
         //this.e = this;
         this.element = element;
-        this.text = function (text) {
-            this.element.textContent = text;
-            //console.log(this);
-            // console.log(this == e)
-            return this;
-        };
-        this.on = function (event, callback) {
-            this.element.addEventListener(event, callback);
-        };
-        this.html = function (html) {
-            this.element.innerHTML = html;
-        };
     }
+    jammer.prototype.on = function (event, callback) {
+        this.element.addEventListener(event, callback);
+    };
+    jammer.prototype.text =function (text) {
+        this.element.textContent = text;
+        //console.log(this);
+        // console.log(this == e)
+        return this;
+    };
+    jammer.prototype.html = function (html) {
+        this.element.innerHTML = html;
+    };
     return jammer;
 })();
